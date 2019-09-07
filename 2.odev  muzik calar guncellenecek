@@ -1,0 +1,107 @@
+'''Odev 3: Bir muzik calar objesi yapmanizi istiyoruz. Instance(Object) attribute olarak bos bir sarki listesi olusturun.
+Class methods olarak sarki listesini sifirlama, listeyi goruntuleme,
+sarki ekleme, sarki silme, sonraki parcayi cal, onceki parcayi cal, karisik cal ozelliklerini ekleyin.'''
+
+
+
+import random
+liste=["1.Orhan  gencebay   :BATSIN BU DUNYA",
+       "2.Muslum Gurses    : AYSEM" ,
+       "3.Ahmet - Ah Canım Vah Canım (1994)",
+       "4.Ajda Pekkan - Yaz, Yaz, Yaz (1990)",
+       "5.Akın - Rebeka (1995)",
+       "6.Ali Güven - Yolcu (1997)",
+       "7.Resit MUHTAR -Akinci Turkusu",
+       "8.Asya - Olmadı Yar (1999)",
+       "9.Aşkın Nur Yengi - Ay İnanmıyorum (1994)",
+       "10.Ayna - Ölünce Sevemezsem Seni (1996)",
+       "11.Barış Manço - Gülpembe (1981)",
+       "12.Kayahan - Geceler (1988)"]
+
+class muzik_calar():
+    def __init__(self,sarki_listesi):
+        self.sarki_listesi=sarki_listesi
+
+
+    def listeyi_temizle(self,liste):
+
+        liste.clear()
+        return ("Muzik listenizdeki tum muzikler silinmistir..")
+
+    def listeyi_goruntule(self,liste):
+        for i in liste:
+            print(i)
+        return ("*****Albumunuzde bulaunan sarki listesi****")
+
+    def sarki_ekle(self,yeni_sarki):
+        liste.append(yeni_sarki)
+        print(muzik_calar.listeyi_goruntule(self,liste))
+
+        return ("Yeni sarki muzik listesine eklenmistir..")
+
+    def sarki_silme(self,silinecek_para_numarasi):
+        print("Secmis oldugunuz sarki muzik listenizden silinmistir")
+        return liste.pop((int(silinecek_para_numarasi)-1))
+
+    def sonraki_parcayi_cal(self, sonraki_sarki):
+        for i in liste:
+            if sonraki_sarki == i:
+                a = liste.index(i)
+                return ("Caliniyor...", liste[a + 1])
+
+    def onceki_parcayi_cal(self, onceki_sarki):
+        for i in liste:
+            if onceki_sarki == i:
+                a = liste.index(i)
+                return ("Caliniyor...", liste[a - 1])
+
+    def karisik_cal(self):
+        karisik = random.choice(liste)
+        return ("Caliniyor...", karisik)
+
+
+
+
+
+
+
+muzik_calar1=muzik_calar(liste)
+
+while True:
+
+
+    print('''************MUZUK CALAR SECENEKLERI************
+    1)MUZIK LISTENISI GORUNTULEME
+    2)MUZIK LISTESINI TEMIZLEME
+    3)MUZIK LISTESINE PARCA EKLEME
+    4)MUZIK LISTESINDE SONRAKI PARCAYI CALMA
+    5)MUZIK LISTESINDE ONCEKI PARCAYI CALMA
+    7)MUZIK LISTESINDE SONRAKI KARISIK CALMA
+    8)MUZIK LISTESINDEN PARCA SILME
+    9)CIKIS''')
+
+    secim=int(input("yapmak istediginiz islem numarasini seciniz   :"))
+
+
+    if secim==1:
+        muzik_calar1.listeyi_goruntule(liste)
+
+    elif secim==2:
+        muzik_calar1.listeyi_temizle(liste)
+
+    elif secim==3:
+        sarki_ismi=input("sarki ismini giriniz")
+        muzik_calar1.sarki_ekle(sarki_ismi)
+
+    elif secim==4:
+        sonraki_sarki=input("su an dinlediginiz sarki ismini yaziniz   :")
+        muzik_calar1.sonraki_parcayi_cal( sonraki_sarki)
+
+    elif secim == 8:
+        silinecek_para_numarasi=input("silinecek parca numarsini yaziniz    :")
+        muzik_calar1.sarki_silme(silinecek_para_numarasi)
+
+
+
+
+
