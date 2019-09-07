@@ -1,0 +1,119 @@
+'''Odev 2: Bir cep telefonu objesi yapmanizi istiyoruz.
+ Telefonun marka, model, uretim yili, tel nosu ve rehber gibi obje ozelliklerinin(instance attributes) olmasini bekliyoruz.
+  Ayrica bu objenin rehbere no ekleme, silme, rehberi goruntuleme, rehberden secilen bir noyu arama(gostermelik) gibi
+ozelliklerinin (class methods) olmasini istiyoruz.'''
+import time
+class telofon():
+
+    def __init__(self,marka,model,uretim_yili,tel_no):
+        self.marka=marka
+        self.model=model
+        self.uretim_yili=uretim_yili
+        self.tel_no=tel_no
+
+    def bilgileri_goster(self):
+        return ('''***********TELOFONUNUZUN OZELLIKLERI*************
+        1.)TELOFONUNUZUN MARKASI        :{}
+        2.)TELOFONUNUZUN MODELI         :{}
+        3.)TELOFONUNUZUN URETIM YILI    :{}
+        4.)TELOFOUNUZUN NUMARASI        :{}'''.format(self.marka,self.model,self.uretim_yili,self.tel_no))
+
+    def rehber_ozellikleri(self):
+
+        rehber=  {"ahmet erkoc": "05357895265",
+                  "mehmet demir": "05257858965",
+                  "canan kilic": "05327281254",
+                  "yavuz ozturk": "05267824556"}
+
+        import time
+        while True:
+            head = ('''**************************REHBER OZELLIKLERI****************************
+                      1-)Rehbere Kisi Ekleme
+                      2-)Rehberden Kisi Silme
+                      3-)Kisi Arama
+                      4-)Tum Rehberi Goruntuleme
+                      5-)Rehberden Cikis icin "5" tusuna  basiniz
+*******************************************************************''')
+
+            print(head)
+            secenek = input("Rehberde yapmak istediginiz islem numarasini seciniz    :")
+
+            if secenek == "5":
+                return ("telefon rehberinden cikiliyor...")
+                time.sleep(2)
+                break
+
+
+            elif secenek == "1":
+
+                isim_soyisim = input("ismim bosluk soy isim giriniz  :")
+
+                if isim_soyisim in rehber:
+                    print("bu isim var baska isimde olusturunuz")
+                else:
+                    tel_no = input("telofon numarasi giriniz   :")
+
+                    if isim_soyisim != "" and tel_no != "":
+                        liste = {isim_soyisim: tel_no}
+                        rehber.update(liste)
+                        cevap = "{} adlı kişinin telefon numarası: {} rehbere eklendi"
+                        print(cevap.format(isim_soyisim, tel_no))
+                        for i in rehber:
+                            print(i)
+
+                    else:
+                        print("isim yada tel no bos birakilamaz")
+
+            elif secenek == "2":
+                isim_soyisim = input("ismim bosluk soy isim giriniz  :")
+                if not isim_soyisim in rehber:
+                    print("boyle bir isim kayitli degil")
+                else:
+                    print("telofon numarasi:", rehber[isim_soyisim])
+                    cevap = "{} adlı kişinin telefon numarası: {} rehberden  siliniyor.."
+                    print(cevap.format(isim_soyisim, rehber[isim_soyisim]))
+                    time.sleep(1)
+                    rehber.pop(isim_soyisim, rehber[isim_soyisim])
+                    print("Yeni Telofon Rehberiniz    :", rehber)
+                    time.sleep(1)
+
+            elif secenek == "3":
+                isim_soyisim = input("aramak istediginiz kisinin ,ismim bosluk soy isim giriniz  :")
+                print("telofon numarasi:", rehber[isim_soyisim])
+                print("araniyor....")
+                time.sleep(2)
+                print("aramaniz basariyla gerceklesti....")
+
+            elif secenek == "4":
+                print(".......TELOFON REHBERINIZ.....")
+                time.sleep(1)
+                for i, j in rehber.items():
+                    print(i, ":", j)
+
+
+telofon1=telofon("IPHONE","8S",2019,"05352552289")
+
+while True:
+
+    print('''YENI TELEFONUNUZ HAYIRLI OLSUN
+    1)Telofon ozellklerini gormek icin "1" 
+    2)Rehber ozelliklerini gormek icin "2"
+    3)Cikis icin "3" tusuna  basiniz''')
+    secim=input("Yapmak istediginiz islem numarasini seciniz    :")
+
+
+    if secim=="1":
+
+        print(telofon1.bilgileri_goster())
+
+    elif secim=="2":
+        print(telofon1.rehber_ozellikleri())
+
+    elif secim == "3":
+        print(" cikiliyor...")
+        time.sleep(2)
+        break
+
+
+
+
