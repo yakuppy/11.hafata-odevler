@@ -47,17 +47,17 @@ class muzik_calar():
         for i in liste:
             if sonraki_sarki == i:
                 a = liste.index(i)
-                return ("Caliniyor...", liste[a + 1])
+                print ("Caliniyor...", liste[a + 1])
 
     def onceki_parcayi_cal(self, onceki_sarki):
         for i in liste:
             if onceki_sarki == i:
                 a = liste.index(i)
-                return ("Caliniyor...", liste[a - 1])
+                print ("Caliniyor...", liste[a - 1])
 
     def karisik_cal(self):
         karisik = random.choice(liste)
-        return ("Caliniyor...", karisik)
+        print ("Caliniyor...", karisik)
 
 
 
@@ -76,9 +76,9 @@ while True:
     3)MUZIK LISTESINE PARCA EKLEME
     4)MUZIK LISTESINDE SONRAKI PARCAYI CALMA
     5)MUZIK LISTESINDE ONCEKI PARCAYI CALMA
-    7)MUZIK LISTESINDE SONRAKI KARISIK CALMA
-    8)MUZIK LISTESINDEN PARCA SILME
-    9)CIKIS''')
+    6)MUZIK LISTESINDE  KARISIK CALMA
+    7)MUZIK LISTESINDEN PARCA SILME
+    8)CIKIS''')
 
     secim=int(input("yapmak istediginiz islem numarasini seciniz   :"))
 
@@ -97,9 +97,27 @@ while True:
         sonraki_sarki=input("su an dinlediginiz sarki ismini yaziniz   :")
         muzik_calar1.sonraki_parcayi_cal( sonraki_sarki)
 
-    elif secim == 8:
+
+    elif secim==5:
+        onceki_sarki=input("su an dinlediginiz sarki ismini yaziniz   :")
+        muzik_calar1.onceki_parcayi_cal( onceki_sarki)
+
+
+    elif secim==6:
+        karisik_cal=input("enter tusuna basiniz:")
+        muzik_calar1.karisik_cal()
+
+
+
+    elif secim == 7:
         silinecek_para_numarasi=input("silinecek parca numarsini yaziniz    :")
         muzik_calar1.sarki_silme(silinecek_para_numarasi)
+
+    elif secim==8:
+        print("muzik calardan cikiliyor.....")
+        break
+
+
 
 
 
